@@ -66,7 +66,7 @@ const theme = createTheme({
       fontFamily: fontFamily.outfit,
       fontSize: '1.125rem', // 18px
       lineHeight: '1.75rem', // 28px
-      fontWieght: 300,
+      fontWeight: 300,
     }
   }
 });

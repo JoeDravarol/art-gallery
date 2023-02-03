@@ -1,12 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Typography } from "@mui/material";
-import Hero from "features/Hero";
 
-const LandingPage = () => {
+import Hero from "features/Hero";
+import About from "features/About";
+
+const LandingPage: React.FC = () => {
   return (
     <>
       <Hero />
+      <About />
     </>
   );
 };
