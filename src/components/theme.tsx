@@ -12,6 +12,12 @@ declare module '@mui/material/styles' {
       darkGray: string;
     }
   }
+
+  interface BreakpointOverrides {
+    mobile: true;
+    tablet: true;
+    desktop: true;
+  }
 }
 
 const fontFamily = {
@@ -67,6 +73,28 @@ const theme = createTheme({
       fontSize: '1.125rem', // 18px
       lineHeight: '1.75rem', // 28px
       fontWeight: 300,
+    }
+  },
+  breakpoints: {
+    keys: [
+      'xs',
+      'sm',
+      'md',
+      'lg',
+      'xl',
+      'mobile',
+      'tablet',
+      'desktop'
+    ],
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 900,
+      lg: 1200,
+      xl: 1536,
+      mobile: 0,
+      tablet: 768,
+      desktop: 1439
     }
   }
 });
