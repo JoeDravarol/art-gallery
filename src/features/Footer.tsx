@@ -1,5 +1,5 @@
-import React from 'react';
-import { Box, BoxProps, CardMedia, Grid, Link, Stack, Typography } from '@mui/material';
+import React, { BlockquoteHTMLAttributes } from 'react';
+import { Box, BoxProps, CardMedia, Grid, Link, LinkProps, Stack, Typography } from '@mui/material';
 import { styled } from "@mui/material/styles";
 import { Link as RouterLink } from 'react-router-dom';
 
@@ -15,25 +15,37 @@ interface IconContainerProps extends BoxProps {
 const IconContainer = styled(Box)<IconContainerProps>(({ defaultIconColor, theme }) => ({
   display: 'flex', // Remove space between inline element (svg)
   cursor: 'pointer',
+  fill: defaultIconColor ? theme.palette.common.white : theme.palette.secondary.main,
+  '&:hover': {
+    fill: defaultIconColor ? theme.palette.primary.main : theme.palette.common.white,
+  }
+}));
+
+interface StyledLinkProps extends LinkProps {
+  defaultIconColor?: boolean;
+}
+
+const StyledLink = styled(Link)<StyledLinkProps>(({ defaultIconColor, theme }) => ({
   fill: defaultIconColor ? theme.palette.common.white : theme.palette.secondary.main
 }));
 
 type Props = {
   defaultIconColor?: boolean;
+  bgColor?: string;
+  fontColor?: string;
 }
 
-const Footer: React.FC<Props> = ({ defaultIconColor }) => {
+const Footer: React.FC<Props> = ({ defaultIconColor, bgColor = 'secondary.main', fontColor = "common.white" }) => {
   return (
-    <Box bgcolor="secondary.main" px={4} py={6}>
-      <Link to="/" component={RouterLink} display="flex" color="common.black">
+    <Box bgcolor={bgColor} px={4} py={6} color={fontColor}>
+      <StyledLink to="/" component={RouterLink} display="flex" defaultIconColor={defaultIconColor}>
         <Logo />
-      </Link>
+      </StyledLink>
 
       <Typography
         sx={{ fontSize: '1rem', lineHeight: '1.625rem' }}
         variant="body2"
         my="38px"
-        color="common.white"
       >
         The Modern Art Gallery is free to all visitors and open seven days a week from 8am to 9pm. Find us at 99 King Street, Newport, USA.
       </Typography>
