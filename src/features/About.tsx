@@ -23,8 +23,8 @@ const About: React.FC = () => {
   return (
     <Grid component="main" container px={2} mb={15}>
       <picture>
-        <source srcSet={imgRoomMd} media="(min-width: 750px)" />
-        <CardMedia component="img" src={imgRoomSm} alt="Two person looking at a painting" />
+        <source srcSet={imgRoomMd} media="(min-width: 450px)" />
+        <CardMedia component="img" src={imgRoomSm} alt="Gallery room" />
       </picture>
 
       <Box mb={4}>
@@ -43,13 +43,13 @@ const About: React.FC = () => {
 
       <Stack spacing={2}>
         <picture>
-          <source srcSet={imgBenchMd} media="(min-width: 750px)" />
-          <CardMedia component="img" src={imgBenchSm} alt="Two person looking at a painting" />
+          <source srcSet={imgBenchMd} media="(min-width: 450px)" />
+          <CardMedia component="img" src={imgBenchSm} alt="Bench overlooking a painting" />
         </picture>
 
         <picture>
-          <source srcSet={imgGalleryMd} media="(min-width: 750px)" />
-          <CardMedia component="img" src={imgGallerySm} alt="Two person looking at a painting" />
+          <source srcSet={imgGalleryMd} media="(min-width: 400px)" />
+          <CardMedia component="img" src={imgGallerySm} alt="People looking at a painting" />
         </picture>
 
         <Box px={3} py={6} bgcolor="secondary.main" color="common.white">
