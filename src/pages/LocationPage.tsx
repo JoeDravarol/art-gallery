@@ -9,7 +9,7 @@ import Footer from 'features/Footer';
 const LocationPage: React.FC = () => {
   return (
     <>
-      <Box position="fixed" zIndex="10">
+      <Box position="fixed" zIndex="10" ml={{ tablet: 4.75 }}>
         <LinkToHome />
       </Box>
       <Map />
