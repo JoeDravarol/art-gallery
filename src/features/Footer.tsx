@@ -1,5 +1,5 @@
-import React, { BlockquoteHTMLAttributes } from 'react';
-import { Box, BoxProps, CardMedia, Grid, Link, LinkProps, Stack, Typography } from '@mui/material';
+import React from 'react';
+import { Box, BoxProps, Grid, Link, LinkProps, Stack, Typography } from '@mui/material';
 import { styled } from "@mui/material/styles";
 import { Link as RouterLink } from 'react-router-dom';
 
@@ -29,6 +29,13 @@ const StyledLink = styled(Link)<StyledLinkProps>(({ defaultIconColor, theme }) =
   fill: defaultIconColor ? theme.palette.common.white : theme.palette.secondary.main
 }));
 
+const StyledGrid = styled(Grid)(({ theme }) => ({
+  [theme.breakpoints.up('tablet')]: {
+    display: 'grid',
+    gridTemplateColumns: '175px minmax(281px, 1fr) 223px',
+  }
+}));
+
 type Props = {
   defaultIconColor?: boolean;
   bgColor?: string;
@@ -37,20 +44,30 @@ type Props = {
 
 const Footer: React.FC<Props> = ({ defaultIconColor, bgColor = 'secondary.main', fontColor = "common.white" }) => {
   return (
-    <Box bgcolor={bgColor} px={4} py={6} color={fontColor}>
-      <StyledLink to="/" component={RouterLink} display="flex" defaultIconColor={defaultIconColor}>
+    <StyledGrid
+      bgcolor={bgColor}
+      px={{ mobile: 4, tablet: 5 }}
+      py={{ mobile: 6, tablet: 7 }}
+      color={fontColor}
+    >
+      <StyledLink
+        to="/"
+        component={RouterLink}
+        display="flex"
+        defaultIconColor={defaultIconColor}
+      >
         <Logo />
       </StyledLink>
 
       <Typography
         sx={{ fontSize: '1rem', lineHeight: '1.625rem' }}
         variant="body2"
-        my="38px"
+        my={{ mobile: '38px', tablet: 'initial' }}
       >
         The Modern Art Gallery is free to all visitors and open seven days a week from 8am to 9pm. Find us at 99 King Street, Newport, USA.
       </Typography>
 
-      <Stack direction="row" spacing={2.5}>
+      <Stack direction="row" spacing={2.5} justifySelf={{ tablet: 'end' }}>
         <IconContainer defaultIconColor={defaultIconColor}>
           <IconFacebook />
         </IconContainer>
@@ -63,7 +80,7 @@ const Footer: React.FC<Props> = ({ defaultIconColor, bgColor = 'secondary.main',
           <IconTwitter />
         </IconContainer>
       </Stack>
-    </Box>
+    </StyledGrid>
   )
 };
 
