@@ -9,8 +9,10 @@ type Props = {
 }
 
 const LinkToHome: React.FC<Props> = ({ activateHoverState }) => {
+  const className = 'text-container ' + (activateHoverState ? 'hover--active' : ''); 
+
   return (
-    <Link to="/" className={activateHoverState ? 'hover--active' : ''}>
+    <Link to="/" className={className} animateToRight>
       <Stack
         className="arrow"
         component="span"
@@ -22,7 +24,7 @@ const LinkToHome: React.FC<Props> = ({ activateHoverState }) => {
       >
         <IconArrowLeft />
       </Stack>
-      <Box textAlign="center" component="span" width={204}>
+      <Box className="text" textAlign="center" component="span" width={204}>
         Back to home
       </Box>
     </Link>

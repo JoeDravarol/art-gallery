@@ -9,9 +9,11 @@ type Props = {
 }
 
 const LinkToLocation: React.FC<Props> = ({ activateHoverState }) => {
+  const className = 'text-container ' + (activateHoverState ? 'hover--active' : ''); 
+
   return (
-    <Link to="/location" className={activateHoverState ? 'hover--active' : ''}>
-      <Box textAlign="center" component="span" width={204}>
+    <Link to="/location" className={className}>
+      <Box className="text" textAlign="center" component="span" width={204}>
         Our location
       </Box>
       <Stack
