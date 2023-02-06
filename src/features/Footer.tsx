@@ -9,30 +9,44 @@ import { ReactComponent as IconInstagram } from 'assets/icons/icon-instagram.svg
 import { ReactComponent as IconTwitter } from 'assets/icons/icon-twitter.svg'
 
 interface IconContainerProps extends BoxProps {
-  defaultIconColor?: boolean;
+  defaulticoncolor?: boolean;
 }
 
-const IconContainer = styled(Box)<IconContainerProps>(({ defaultIconColor, theme }) => ({
+const IconContainer = styled(Box)<IconContainerProps>(({ defaulticoncolor, theme }) => ({
   display: 'flex', // Remove space between inline element (svg)
   cursor: 'pointer',
-  fill: defaultIconColor ? theme.palette.common.white : theme.palette.secondary.main,
+  fill: defaulticoncolor ? theme.palette.common.white : theme.palette.secondary.main,
   '&:hover': {
-    fill: defaultIconColor ? theme.palette.primary.main : theme.palette.common.white,
+    fill: defaulticoncolor ? theme.palette.primary.main : theme.palette.common.white,
   }
 }));
 
 interface StyledLinkProps extends LinkProps {
-  defaultIconColor?: boolean;
+  defaulticoncolor?: boolean;
 }
 
-const StyledLink = styled(Link)<StyledLinkProps>(({ defaultIconColor, theme }) => ({
-  fill: defaultIconColor ? theme.palette.common.white : theme.palette.secondary.main
+const StyledLink = styled(Link)<StyledLinkProps>(({ defaulticoncolor, theme }) => ({
+  fill: defaulticoncolor ? theme.palette.common.white : theme.palette.secondary.main,
+  [theme.breakpoints.up('desktop')]: {
+    display: 'block',
+    width: 160,
+    height: 58,
+    'svg': {
+      width: '100%',
+      height: '100%',
+    }
+  }
 }));
 
 const StyledGrid = styled(Grid)(({ theme }) => ({
   [theme.breakpoints.up('tablet')]: {
     display: 'grid',
-    gridTemplateColumns: '175px minmax(281px, 1fr) 223px',
+    gridTemplateColumns: '175px minmax(281px, 1fr) 1fr',
+    maxWidth: 1110,
+    marginInline: 'auto',
+  },
+  [theme.breakpoints.up('desktop')]: {
+    gridTemplateColumns: '300px 430px 1fr'
   }
 }));
 
@@ -44,43 +58,44 @@ type Props = {
 
 const Footer: React.FC<Props> = ({ defaultIconColor, bgColor = 'secondary.main', fontColor = "common.white" }) => {
   return (
-    <StyledGrid
-      bgcolor={bgColor}
-      px={{ mobile: 4, tablet: 5 }}
-      py={{ mobile: 6, tablet: 7 }}
-      color={fontColor}
-    >
-      <StyledLink
-        to="/"
-        component={RouterLink}
-        display="flex"
-        defaultIconColor={defaultIconColor}
+    <Box bgcolor={bgColor} color={fontColor}>
+      <StyledGrid
+        px={{ mobile: 4, tablet: 5, desktop: 'initial' }}
+        py={{ mobile: 6, tablet: 7, desktop: 10 }}
       >
-        <Logo />
-      </StyledLink>
+        <StyledLink
+          to="/"
+          component={RouterLink}
+          display="flex"
+          defaulticoncolor={defaultIconColor}
+        >
+          <Logo />
+        </StyledLink>
 
-      <Typography
-        sx={{ fontSize: '1rem', lineHeight: '1.625rem' }}
-        variant="body2"
-        my={{ mobile: '38px', tablet: 'initial' }}
-      >
-        The Modern Art Gallery is free to all visitors and open seven days a week from 8am to 9pm. Find us at 99 King Street, Newport, USA.
-      </Typography>
+        <Typography
+          variant="body2"
+          fontSize={{ mobile: '1rem', desktop: '1.125rem' }}
+          lineHeight={{ mobile: '1.625rem', desktop: '1.75rem' }}
+          my={{ mobile: '38px', tablet: 'initial' }}
+        >
+          The Modern Art Gallery is free to all visitors and open seven days a week from 8am to 9pm. Find us at 99 King Street, Newport, USA.
+        </Typography>
 
-      <Stack direction="row" spacing={2.5} justifySelf={{ tablet: 'end' }}>
-        <IconContainer defaultIconColor={defaultIconColor}>
-          <IconFacebook />
-        </IconContainer>
+        <Stack direction="row" spacing={2.5} justifySelf={{ tablet: 'end' }}>
+          <IconContainer defaulticoncolor={defaultIconColor}>
+            <IconFacebook />
+          </IconContainer>
 
-        <IconContainer defaultIconColor={defaultIconColor}>
-          <IconInstagram />
-        </IconContainer>
+          <IconContainer defaulticoncolor={defaultIconColor}>
+            <IconInstagram />
+          </IconContainer>
 
-        <IconContainer defaultIconColor={defaultIconColor}>
-          <IconTwitter />
-        </IconContainer>
-      </Stack>
-    </StyledGrid>
+          <IconContainer defaulticoncolor={defaultIconColor}>
+            <IconTwitter />
+          </IconContainer>
+        </Stack>
+      </StyledGrid>
+    </Box>
   )
 };
 
