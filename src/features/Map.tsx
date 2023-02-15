@@ -14,8 +14,8 @@ const Map: React.FC = () => {
   const position = [41.480416, -71.31093];
 
   return (
-    <Box>
-      <MapContainer style={{ height: '550px', zIndex: '0' }} center={position} zoom={15.5} zoomControl={false} attributionControl={false}>
+    <Box height={{ mobile: '550px', tablet: '600px' }}>
+      <MapContainer style={{ height: '100%', zIndex: 0 }} center={position} zoom={15.5} zoomControl={false} attributionControl={false}>
         <TileLayer url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" />
         <Marker position={position} icon={customMarker}>
           <Popup>

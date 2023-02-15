@@ -6,6 +6,7 @@ const StyledGrid = styled(Grid)(({ theme }) => ({
   [theme.breakpoints.up('tablet')]: {
     display: 'grid',
     gridTemplateColumns: 'minmax(223px, 580px) minmax(398px, 540px)',
+    height: 436,
     justifyItems: 'center',
     gridGap: theme.spacing(8)
   },
@@ -24,8 +25,8 @@ const LocationInfo: React.FC = () => {
       <StyledGrid
         container
         px={{ mobile: 2, tablet: 5, desktop: 'initial' }}
-        pt={{ mobile: 6, tablet: 11 }}
-        pb={{ mobile: 7, tablet: 10 }}
+        pt={{ mobile: 6, tablet: 11, desktop: 13 }}
+        pb={{ mobile: 7, tablet: 10, desktop: 16 }}
       >
         <Typography
           variant="h3"
@@ -54,7 +55,11 @@ const LocationInfo: React.FC = () => {
             <Typography variant="body2" component="span" fontSize={{ desktop: '1.375rem'}} lineHeight={{ desktop: '2rem' }}>United States of America</Typography>
           </Stack>
 
-          <Typography variant="body2" fontSize={{ desktop: '1.375rem'}} lineHeight={{ desktop: '2rem' }}>
+          <Typography
+            variant="body2" 
+            fontSize={{ desktop: '1.375rem'}} 
+            lineHeight={{ desktop: '2rem' }}
+          >
             Our newly opened gallery is located near the Edward King House on 99 King Street, the Modern Art Gallery is free to all visitors and open seven days a week from 8am to 9pm.
           </Typography>
         </Box>

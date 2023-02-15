@@ -43,6 +43,8 @@ const StyledGrid = styled(Grid)(({ theme }) => ({
     display: 'grid',
     gridTemplateColumns: '175px minmax(281px, 1fr) 1fr',
     maxWidth: 1110,
+    height: 216,
+    alignContent: 'center',
     marginInline: 'auto',
   },
   [theme.breakpoints.up('desktop')]: {
