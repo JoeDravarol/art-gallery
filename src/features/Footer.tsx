@@ -23,6 +23,8 @@ const IconContainer = styled(Box)<IconContainerProps>(({ defaulticoncolor, theme
 
 interface StyledLinkProps extends LinkProps {
   defaulticoncolor?: boolean;
+  to: string;
+  component: React.ElementType;
 }
 
 const StyledLink = styled(Link)<StyledLinkProps>(({ defaulticoncolor, theme }) => ({

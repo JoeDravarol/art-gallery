@@ -1,17 +1,17 @@
 import React from 'react';
 import { Box } from '@mui/material';
-import { MapContainer, TileLayer, Marker, Popup, SVGOverlay } from 'react-leaflet';
-import L from 'leaflet';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import L, { LatLngExpression } from 'leaflet';
 
 import iconMarker from 'assets/icons/icon-location.svg';
 
-const customMarker = new L.icon({
+const customMarker = L.icon({
   iconUrl: iconMarker,
   iconSize: [49.5, 66],
 });
 
 const Map: React.FC = () => {
-  const position = [41.480416, -71.31093];
+  const position: LatLngExpression = [41.480416, -71.31093];
 
   return (
     <Box height={{ mobile: '550px', tablet: '600px' }}>
